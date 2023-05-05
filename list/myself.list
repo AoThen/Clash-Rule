@@ -1,0 +1,14 @@
+# OneDrive
+# PROCESS-NAME,OneDrive
+# PROCESS-NAME,OneDriveUpdater
+# USER-AGENT,OneDrive*
+# USER-AGENT,OneDriveiOSApp*
+# DOMAIN-KEYWORD,1drv
+DOMAIN-SUFFIX,pythonhosted.org
+DOMAIN-SUFFIX,pypi.org
+DOMAIN-SUFFIX,you.com
+DOMAIN-SUFFIX,poe.com
+DOMAIN-SUFFIX,slack.com
+DOMAIN-SUFFIX,forefront.ai
+DOMAIN-SUFFIX,forefront.ai
+DOMAIN,bulianglin.com

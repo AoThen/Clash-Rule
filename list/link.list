@@ -1,0 +1,7 @@
+DOMAIN-SUFFIX,cloudflare.com
+DOMAIN,smtp.office365.com
+DOMAIN,imap-mail.outlook.com
+DOMAIN,smtp-mail.outlook.com
+DOMAIN-SUFFIX,eset.com
+DOMAIN-SUFFIX,esetsoftware.com
+DOMAIN-KEYWORD,eset

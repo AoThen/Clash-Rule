@@ -1,0 +1,66 @@
+name: Repo Sync
+
+on:
+  workflow_dispatch:
+  
+  push:
+    branches:
+      - 'main'
+    paths:
+      - '.github/workflows/Repo-Sync.yaml'
+
+  # schedule:
+  #   - cron: "0 1 * * *"
+
+env:
+  IsRebase: false
+
+jobs:
+  packages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sleep Random Time
+        run: sleep $(shuf -i 10-60 -n 1)
+      - uses: actions/checkout@main
+      - name: Rebase
+        if: env.IsRebase == 'true'
+        run: |
+          git config --global user.email ${{ secrets.EMAIL }}
+          git config --global user.name ${{ secrets.NAME }}
+          git clone -b main https://github.com/AoThen/Clash-Rule --single-branch
+          cd Clash-Rule
+
+          git checkout --orphan latest_branch
+          git add -A
+          git commit -am "init commit"
+
+          git branch -D main
+          git branch -m main
+
+      - name: Sync
+        if: env.IsRebase == 'false'
+        run: |
+          git config --global user.email ${{ secrets.EMAIL }}
+          git config --global user.name ${{ secrets.NAME }}
+          git clone -b main https://github.com/AoThen/Clash-Rule --single-branch
+          cd Clash-Rule
+
+          git clone -b master https://github.com/ACL4SSR/ACL4SSR --single-branch
+          mv -f ACL4SSR/Clash Clash
+          rm -rf ACL4SSR
+
+
+          git add .
+          Emoji=("🎉" "✨" "🎁" "🎈" "🎄" "🍓" "🍕" "🍉" "🌴" "🚀" "⛅" "🌈" "❤️")
+          git commit -m "${Emoji[$[$RANDOM % ${#Emoji[@]}]]}update at $(TZ='Asia/Shanghai' date +%Y-%m-%d)${Emoji[$[$RANDOM % ${#Emoji[@]}]]}"
+          
+          
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.ClashRule }}
+          repository: "AoThen/Clash-Rule"
+          branch: "main"
+          directory: "Clash-Rule"
+          force: true
