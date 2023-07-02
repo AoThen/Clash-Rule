@@ -1,3 +1,7 @@
+DOMAIN-SUFFIX,services.googleapis.cn
+DOMAIN-SUFFIX,xn--ngstr-lra8j.com
+DOMAIN-SUFFIX,workers.dev
+DOMAIN-SUFFIX,eu.org
 DOMAIN-SUFFIX,cloudflare.com
 DOMAIN,smtp.office365.com
 DOMAIN,imap-mail.outlook.com

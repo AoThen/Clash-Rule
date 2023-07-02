@@ -46,6 +46,7 @@ jobs:
           cd Clash-Rule
 
           git clone -b master https://github.com/ACL4SSR/ACL4SSR --single-branch
+          rm -rf Clash
           mv -f ACL4SSR/Clash Clash
           rm -rf ACL4SSR
 
