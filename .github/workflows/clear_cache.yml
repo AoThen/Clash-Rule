@@ -3,8 +3,7 @@ name: Clean jsDelivr Cache
 on: 
   push:
     branches: 
-      - master
-      - DIY
+      - main
     paths-ignore:
       - 'README.md'
       - 'LICENSE'
