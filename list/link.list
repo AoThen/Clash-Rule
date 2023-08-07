@@ -7,3 +7,6 @@ DOMAIN,smtp-mail.outlook.com
 DOMAIN-SUFFIX,eset.com
 DOMAIN-SUFFIX,esetsoftware.com
 DOMAIN-KEYWORD,eset
+DOMAIN-SUFFIX,kaspersky-labs.com
+DOMAIN-SUFFIX,kaspersky.com
+DOMAIN-KEYWORD,kaspersky
