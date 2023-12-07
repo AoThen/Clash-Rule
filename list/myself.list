@@ -15,3 +15,7 @@ DOMAIN,bulianglin.com
 DOMAIN-SUFFIX,huggingface.co
 DOMAIN-SUFFIX,civitai.com
 DOMAIN-SUFFIX,claude.ai
+#ESET
+DOMAIN-SUFFIX,eset.com
+DOMAIN-SUFFIX,esetsoftware.com
+DOMAIN-KEYWORD,eset
