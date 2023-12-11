@@ -2,6 +2,10 @@
 
 openclash规则模板
 
+## 自用
+
+https://gcore.jsdelivr.net/gh/AoThen/Clash-Rule/main/CustALL-CDN.ini
+
 ## CDN版
 https://gcore.jsdelivr.net/gh/AoThen/Clash-Rule@DIY/CustX-CDN.ini
 
