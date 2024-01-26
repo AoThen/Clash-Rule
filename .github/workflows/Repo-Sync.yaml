@@ -15,7 +15,11 @@ on:
 env:
   IsRebase: false
 
+permissions:
+  contents: write # for Git to git push
+
 jobs:
+
   packages:
     runs-on: ubuntu-latest
     steps:
@@ -55,13 +59,15 @@ jobs:
           Emoji=("🎉" "✨" "🎁" "🎈" "🎄" "🍓" "🍕" "🍉" "🌴" "🚀" "⛅" "🌈" "❤️")
           git commit -m "${Emoji[$[$RANDOM % ${#Emoji[@]}]]}update at $(TZ='Asia/Shanghai' date +%Y-%m-%d)${Emoji[$[$RANDOM % ${#Emoji[@]}]]}"
           
-          
+      - name: Push to GitHub
+        run: |
+          git push "https://${{ secrets.NAME }}:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git" main
 
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.ClashRule }}
-          repository: "AoThen/Clash-Rule"
-          branch: "main"
-          directory: "Clash-Rule"
-          force: true
+      # - name: Push changes
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.ClashRule }}
+      #     repository: "AoThen/Clash-Rule"
+      #     branch: "main"
+      #     directory: "Clash-Rule"
+      #     force: true
