@@ -2,12 +2,12 @@ name: Repo Sync
 
 on:
   workflow_dispatch:
-  
-  push:
-    branches:
-      - 'main'
-    paths:
-      - '.github/workflows/Repo-Sync.yaml'
+
+  # push:
+  #   branches:
+  #     - 'main'
+  #   paths:
+  #     - '.github/workflows/Repo-Sync.yaml'
 
   # schedule:
   #   - cron: "0 1 * * *"
@@ -23,9 +23,10 @@ jobs:
   packages:
     runs-on: ubuntu-latest
     steps:
-      - name: Sleep Random Time
-        run: sleep $(shuf -i 10-60 -n 1)
+      # - name: Sleep Random Time
+      #   run: sleep $(shuf -i 10-60 -n 1)
       - uses: actions/checkout@main
+
       - name: Rebase
         if: env.IsRebase == 'true'
         run: |
@@ -44,8 +45,9 @@ jobs:
       - name: Sync
         if: env.IsRebase == 'false'
         run: |
-          git config --global user.email ${{ secrets.EMAIL }}
           git config --global user.name ${{ secrets.NAME }}
+          git config --global user.email ${{ secrets.EMAIL }}
+          
           git clone -b main https://github.com/AoThen/Clash-Rule --single-branch
           cd Clash-Rule
 
@@ -58,10 +60,12 @@ jobs:
           git add .
           Emoji=("🎉" "✨" "🎁" "🎈" "🎄" "🍓" "🍕" "🍉" "🌴" "🚀" "⛅" "🌈" "❤️")
           git commit -m "${Emoji[$[$RANDOM % ${#Emoji[@]}]]}update at $(TZ='Asia/Shanghai' date +%Y-%m-%d)${Emoji[$[$RANDOM % ${#Emoji[@]}]]}"
-          
-      - name: Push to GitHub
-        run: |
-          git push "https://${{ secrets.NAME }}:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git" main
+          git push "https://${{ secrets.NAME }}:${{ github.token }}@github.com/${{ github.repository }}.git" main
+
+
+      # - name: Push to GitHub
+      #   run: |
+      #     git push "https://${{ secrets.NAME }}:${{ github.token }}@github.com/${{ github.repository }}.git" main
 
       # - name: Push changes
       #   uses: ad-m/github-push-action@master
